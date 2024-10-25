@@ -1,0 +1,11 @@
+{
+    "emmet.preferences": {
+        // Existing Emmet preferences
+    },
+    "eslint.nodePath": "",
+    "terminal.integrated.shellIntegration.enabled": false,
+    "terminal.integrated.automationProfile.windows": {
+        "kind": "Git Bash"
+    },
+    "terminal.integrated.defaultProfile.windows": "Git Bash"
+}
