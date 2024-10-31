@@ -1,24 +1,51 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"os"
-)
+import "fmt"
 
-type messageToSend struct{
-    message string
-    sender int
-    recipient bool
+type employee interface {
+	getName() string
+	getSalary() int
 }
 
-func main(){
-    reader:= bufio.NewReader(os.Stdin)
-    
-    fmt.Print("Enter your message:")
+type contractor struct {
+	name         string
+	hourlyPay    int
+	hoursPerYear int
+}
 
-    message,_ := reader.ReadString('\n')
+type fullTime struct {
+	name   string
+	salary int
+}
 
-    fmt.Printf("You wished: %s\n",message)
+func (c contractor) getName() string {
+	return c.name
+}
+func (c contractor) getSalary() int {
+	return c.hourlyPay * c.hoursPerYear
+}
 
+func (ft fullTime) getName() string {
+	return ft.name
+}
+func (ft fullTime) getSalary() string {
+	ft.getSalary()
+}
+
+func test(e employee) {
+	fmt.Println("Employee Name:", e.getName())
+	fmt.Println("Employee Salary:", e.getSalary())
+	fmt.Println("------")
+}
+
+func main() {
+	contractor1 := contractor{
+		name:         "Yaqoob",
+		hourlyPay:    40,
+		hoursPerYear: 2000,
+	}
+	fullTime1 := fullTime{name: "Ali", salary: 80000}
+
+	test(contractor1)
+	test(fullTime1)
 }
